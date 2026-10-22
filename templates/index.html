@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% set title="صفحه اصلی" %}{% block content %}
+<section class="hero"><p class="eyebrow">WORLD POLITICS GAME</p><h1>جهان بازی را مدیریت کن</h1><p>کشورها، دیپلماسی، خبرگزاری، نقشه و شاپ در یک سامانه.</p><div class="actions"><a class="btn" href="{{ url_for('register') }}">ساخت حساب بازیکن</a><a class="btn secondary" href="{{ url_for('superpowers') }}">دیدن ۲۰ ابرقدرت</a></div></section>
+<div class="stats"><div><b>{{ countries_count if countries_count else 52 }}</b><span>کشور</span></div><div><b>20</b><span>ابرقدرت عمومی</span></div><div><b>9</b><span>گروه و سازمان</span></div></div>
+<section class="panel"><h2>خبرهای تازه</h2>{% for n in news %}<article class="news"><span class="tag">{{ n.target }}</span><h3>{{ n.title }}</h3><p>{{ n.body }}</p><small>{{ n.created_at.strftime("%Y-%m-%d %H:%M UTC") }}</small></article>{% else %}<p class="muted">هنوز خبری منتشر نشده است.</p>{% endfor %}</section>
+<section class="panel"><h2>ویژگی‌ها</h2><div class="cards"><div class="card"><h3>🗺️ نقشه</h3><p>نمایش رنگ و وضعیت هر کشور.</p></div><div class="card"><h3>🤝 دیپلماسی</h3><p>ثبت پیشنهاد مذاکره، پیمان، اتحاد و آتش‌بس.</p></div><div class="card"><h3>🛍️ شاپ</h3><p>خرید نشان CIP و VIP با اعتبار داخل بازی.</p></div><div class="card"><h3>📣 خبرگزاری</h3><p>انتشار اطلاعیه توسط مالک برای همه یا مخاطب منتخب.</p></div></div></section>
+{% endblock %}
